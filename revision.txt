@@ -1,0 +1,39 @@
+SELECT firstname,lastname,age,gender 
+WHERE age > 30
+FROM customers;
+
+SELECT firstname,lastname,age,gender,
+   IF(age > 30,"old","young") AS age
+FROM customers;
+
+
+SELECT CASE
+          WHEN 10 > 20 THEN "OLDER"
+          ELSE "YOUNGER"
+       END;
+
+SELECT CASE
+          WHEN 10 > 20 THEN "ORDER"
+          WHEN 50 BETWEEN 60 AND 100 THEN "YONGER"
+          ELSE "EQUAL"
+       END;
+
+
+
+SELECT * 
+  CASE
+     WHEN age < 30 THEN "young"
+     WHEN age  < 40 THEN "elder"
+     ELSE "old"
+  END AS "age verify"
+FROM customers;
+
+
+SELECT firstname,lastname,age ,
+   CASE
+      WHEN age =< 18 THEN "too young"
+      WHEN age <= 24 THEN "can access"
+      WHEN age >= 25 AND age <= 45 THEN "manager"
+      ELSE "retired"
+   END AS "age verify"
+FROM customers;

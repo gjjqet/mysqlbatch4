@@ -1,0 +1,23 @@
+=>Database List;
+SHOW DATABASES;
+
+=>Choose Database
+USE wdff007;
+
+=>Delete Database
+DROP DATABASE wdff007;
+
+
+=>About Database Naming
+
+*Do
+CREATE DATABASE bookshop;
+CREATE DATABASE book_shop;
+CREATE DATABASE bookShop;
+
+*Don't
+CREATE DATABASE 55bookshop;
+CREATE DATABASE book#shop;
+CREATE DATABASE book Shop;
+
+--------------------------------------------------

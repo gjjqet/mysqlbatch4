@@ -1,0 +1,156 @@
+=> COUNT() , SUM() , AVG() , MIN() ,MAX() = Aggregate Function
+
+Syntax = COUNT()
+
+SELECT COUNT(column) FROM tablename
+WHERE condition;
+
+Syntax = SUM()
+
+SELECT SUM(column) FROM tablename
+WHERE condition;
+
+Syntax = AVG()
+
+SELECT AVG(column) FROM tablename
+WHERE condition;
+
+Syntax = MIN()
+
+SELECT MIN(column) FROM tablename
+WHERE condition;
+
+Syntax = MAX()
+
+SELECT MAX(column) FROM tablename
+WHERE condition;
+
+-----------------------------------------------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS customers(
+    id INT NOT NULL AUTO_INCREMENT,
+    firstname VARCHAR(50) NOT NULL,
+    lastname VARCHAR(50) NOT NULL,
+    age INT NOT NULL,
+    gender VARCHAR(10) NOT NULL,
+    city VARCHAR(30) NOT NULL,
+    amount DECIMAL(8,2) DEFAULT 0,
+    PRIMARY KEY(id)
+);
+
+DESC customers;
+SHOW INDEX FROM customers;
+SHOW CREATE TABLE customers;
+
+INSERT INTO customers(firstname,lastname,age,gender,city,amount)
+VALUES("aung","kyaw",25,"male","yangon",50000),
+      ("su","lae",19,"female","yangon",50000),
+      ("yu","par",52,"female","mandalay",30000),
+      ("aung","tun tun",34,"male","bago",40000),
+      ("aung","aung oo",34,"male","mandalay",50000),
+      ("ya","min",20,"male","bago",20000),
+      ("pa","pa",22,"female","yangon",10000),
+      ("kyaw","kyaw",18,"male","mandalay",5000),
+      ("myo","kyaw",20,"male","bago",6000),
+      ("hsu","yee",25,"female","mandalay",1000),
+      ("min","min",15,"male","yangon",2000),
+      ("thandar","line lae",25,"male","mandalay",90000),
+      ("nay","win",17,"male","pya",700000),
+      ("nay","toe",13,"male","mandalay",3000),
+      ("su shoon","lae",53,"female","pya",70000),
+      ("aung","kyaw",30,"male","yangon",80000);
+
+
+SELECT * FROM customers;
+
+=> COUNT();
+
+SELECT * FROM customers
+WHERE amount > 10000;
+
+SELECT COUNT(amount) FROM customers
+WHERE amount > 10000;
+
+SELECT * FROM customers
+WHERE firstname = "aung";
+
+SELECT COUNT(firstname) FROM customers
+WHERE firstname = "aung";
+
+SELECT COUNT(id) FROM customers
+WHERE firstname = "aung";
+
+
+=> SUM()
+
+SELECT * FROM customers
+WHERE amount > 50000;
+
+SELECT SUM(amout) FROM customers
+WHERE amount > 50000;
+
+SELECT * FROM customers
+WHERE city = "Mandalay";
+
+SELECT SUM(amount) FROM customers
+WHERE city = "Mandalay";
+
+
+=> AVG()
+
+SELECT * FROM customers
+WHERE city = "yangon";
+
+SELECT AVG(amount) FROM customers
+WHERE city = "yangon";
+
+SELECT AVG(age) FROM customers
+WHERE city = "mandalay";
+
+
+=> MIN()
+
+SELECT MIN(age) FROM customers;
+SELECT MIN(amount) FROM customers;
+
+//2000
+SELECT MIN(amount) FROM customers
+WHERE city = "Yangon";
+
+SELECT * FROM customers
+WHERE amount = 2000;
+
+SELECT * FROM customers
+WHERE amount = (SELECT MIN(amount) FROM customers
+WHERE city = "yangon");
+
+SELECT * FROM customers
+WHERE amount = (SELECT MIN(amount) FROM customers);
+
+*error
+SELECT firstname,MIN(amount) FROM customers
+WHERE city = "Yangon";
+
+=> MAX()
+
+SELECT MAX(age) FROM customers;
+SELECT MAX(amount) FROM customers;
+
+SELECT MAX(amount) FROM customers
+WHERE city = "yangon";
+
+SELECT * FROM customers
+WHERE amount = 80000;
+
+SELECT * FROM customers
+WHERE amount = (SELECT MAX(amount) FROM customers
+WHERE city = "Yangon");
+
+SELECT * FROM customers
+WHERE amount = (SELECT MAX(amount) FROM customers);
+
+*error
+SELECT firstname,MAX(amount) FROM customers
+WHERE city = "yangon";
+
+---------------------------------------------------------------------------------

@@ -1,0 +1,112 @@
+=> MySql (Structured Query Language)
+
+=> Comments
+
+=>Single Line Comment
+# comment here
+-- comment here
+/* comment */
+
+=>Multi Line Comment
+/*
+
+commetn here
+
+*/
+
+-----------------------------------------
+
+=> Arithemetic Operators
+
++(Add)
+- (Subtraction)
+* (Multiply)
+/ (Divide)
+% (MOdulus)
+
+-------------------------------------------
+
+=> Comparasion Operators
+
+=                  Define
+>                  Gtater than
+<                  Less than
+>=                 Grater than or Equal
+<=                 Less than or Equal
+!= or <>           Not Equal
+BETWEEN            Between as a certain range
+LIKE               Search For Patten
+IN                 To specify multiple possible values for a columns
+
+
+----------------------------------------------------------
+
+=> Exercise Addition Operator
+
+SELECT 10+2 ; #12
+SELECT "10"+2; #12
+SELECT  "10"+2:  #12
+SELECT "10"+"2";   #12
+SELECT "10"+'2';  #12
+SELECT 10+20,20+30 ; #30 50
+SELECT "100"+"200","300"+200; #300 500
+
+
+=>Exercise Subtraction Operator
+
+SELECT 10 - 2;   #8
+SELECT 20-10,30 - 15; *10 15
+SELECT "100"-"500",500 - '600';  #500 -100
+
+
+=>Exercise Multiplication Operator
+
+SELECT 10 *2; #20
+SELECT 5*3,15 * 5 #15 75
+SELECT "20"*3,"100" * 5; #60 500
+
+
+=>Exercise Division Operator
+
+SELECT 10 / 2;     #5.000
+SELECT 2 / 3, 3/5;  #0.6667  0.6000
+SELECT "100" / 25 , '2000'/'2'; #4 1000
+SELECT 100 / 0; #Null
+
+SELECT 10 DIV 2;     #5.000
+SELECT 2 DIV 3, 3 DIV 5 ; #0.6667  0.6000
+SELECT "100" DIV 25 , '2000'DIV'2'; #4 1000
+SELECT 100 DIV 0; #Null
+
+
+=>Exercise Moudulus Operator
+
+SELECT 10 % 3;   #1
+SELECT 20%3, 30 % 5 ; #2 0
+SELECT "20"% 5, "500" % '300'; #0 200
+
+SELECT 10 MOD 3;   #1
+SELECT 20 MOD3, 30 MOD 5 ; #2 0
+SELECT "20" MOD 5, "500"MOD'300'; #0 200
+
+
+--------------------------------------------------------------
+
+= CRUD
+Creat / Read / Update / Delete
+
+CREATE DATABASE = creat a new database
+CREATE TABLE = create a new table
+
+ALTER DATABASE = modified a dtatbase
+ALTER TABLE = modified a table
+
+DROP DATABASE = delete a database
+DROP TABLE = delete a table
+
+INSERT INTO = insert new data into database table
+SELECT = extracts data from database table
+UPDATE =  update data in a database table
+DELETE = delete data in a database table
+
+---------------------------------------------------------------
