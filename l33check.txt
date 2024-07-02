@@ -1,0 +1,42 @@
+=> CHECK constraint 
+
+CREATE TABLE IF NOT EXISTS purchase(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    orinaryprice DECIMAL(10,2) NOT NULL,
+    sellprice DECIMAL(10,2) NOT NULL
+);
+
+DESC purchase;
+SHOW CREATE TABLE purchase;
+
+INSERT INTO purchase(name,orinaryprice,sellprice) VALUE("redbull",400,1000);
+INSERT INTO purchase(name,orinaryprice,sellprice) VALUE("sponsor",-300,600);
+
+SELECT * FROM purchase;
+
+
+CREATE TABLE IF NOT EXISTS vippurchase(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    orinaryprice DECIMAL(10,2) NOT NULL CHECK(orinaryprice >= 0),
+    sellprice DECIMAL(10,2) NOT NULL CHECK(orinaryprice >= 0)
+);
+
+DESC purchase;
+SHOW CREATE TABLE vippurchase;
+SHOW INDEX FROM vippurchase;
+
+INSERT INTO vippurchase(name,orinaryprice,sellprice) VALUE("redbull",400,1000);
+
+*error
+INSERT INTO vippurchase(name,orinaryprice,sellprice) VALUE("sponsor",-300,600);
+
+*error
+INSERT INTO vippurchase(name,orinaryprice,sellprice) VALUE("sponsor",300,-600);
+INSERT INTO vippurchase(name,orinaryprice,sellprice) VALUE("sponsor",-300,-600);
+
+INSERT INTO vippurchase(name,orinaryprice,sellprice) VALUE("sponsor",0,500);
+INSERT INTO vippurchase(name,orinaryprice,sellprice) VALUE("deedo",0,0);
+
+SELECT * FROM vippurchase;

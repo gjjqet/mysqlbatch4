@@ -1,0 +1,17 @@
+=> Join 
+
+1.INNER JOIN (or simple join)
+2.LEFT OUTER JOIN (or LEFT JOIN)
+3.RIHT OUTER JOIN (or RIGHT JOIN)
+4.FULL JOIN 
+
+
+NOTE :: Relation Basic Note 
+1.One to One Relationship
+2.One to Many Relationship
+3.Many to Many Relationship 
+
+------------------------------------------------------- 
+
+=> Cross Join 
+
