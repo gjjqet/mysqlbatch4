@@ -1,0 +1,156 @@
+=> aungaung@localhost PASSWORD
+
+old password = Tinzarlin123#@
+
+new password = Tinzarlin12345@#$
+
+
+
+=> nunu@localhost PASSWORD
+
+old password = nunubrighteststar
+
+new password = nunubrighteststar
+
+
+
+
+
+---------------------------------------------------------------------------------------------
+
+mysql -V 
+
+mysql -u root -p 
+mydbsever2025
+exist 
+
+
+mysql -u root -pmydbsever2025
+exit 
+
+
+mysql -u root -p -h localhost 
+mydbsever2025
+exit
+
+
+-----------------------------------------------------------------
+
+=>Check user list 
+
+
+= Method 1 
+
+SHOW DATABASES;
+USE mysql;
+SHOW TABLES;
+SELECT user FROM user;
+
+
+
+= Method 2
+
+SELECT user FROM mysql.user;
+SELECT user,host FROM mysql.user;
+
+
+
+--------------------------------------------------------------------
+
+
+=> Create User 
+
+= Method 1 (Localhost)
+
+CREATE USER "user1"@"localhost" IDENTIFIED BY "myprojectserver1Db@#$";
+GRANT ALL PRIVILEGES ON exerciseone.* TO "user1"@"localhost" WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+
+CREATE USER "user2"@"localhost" IDENTIFIED BY "myprojectserver1Db@#$";
+GRANT ALL PRIVILEGES ON exerciseone.* TO "user2"@"localhost" WITH GRANT OPTION;
+GRANT ALL PRIVILEGES ON exercisetwo.* TO "user2"@"localhost" WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+CREATE USER "user3"@"localhost" IDENTIFIED BY "myprojectserver1Db@#$";
+GRANT ALL PRIVILEGES ON *.* TO "user3"@"localhost" WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+
+
+= Method 2 (Remote)
+
+sudo nano /etc/mysql/mysql.config.d/mysql.cnf 
+bind-address = 127.0.0.1
+bind-address = 0.0.0.0
+
+sudo systemctl restart mysql
+
+CREATE USER "user4"@"%" IDENTIFIED BY "myprojectserver1Db@#$";
+GRANT ALL PRIVILEGES ON *.* TO "user4"@"%" WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+
+sudo ufw allow 3306/udp 
+sudo ufw allow 3306/tcp
+
+--------------------------------------------------------------------------
+
+
+=> Update Password 
+
+mysql -u root -p mydbsever2025
+SELECT user();
+
+ALTER USER "user1"@"localhost" IDENTIFIED BY "myprojectserver2Db@#$";
+exit;
+
+mysql -u user1 -pmyprojectserver2Db@#$
+
+
+----------------------------------------------------------------------------------
+
+=> Lock User 
+
+mysql -u root -p 
+mydbsever2025 
+
+SELECT USER();
+
+ALTER USER "user1"@"localhost" ACCOUNT LOCK;
+
+
+
+=> UnLock User 
+
+mysql -u root -p 
+mydbsever2025 
+
+SELECT USER();
+
+ALTER USER "user1"@"localhost" ACCOUNT ULOCK;
+
+
+mysql -u user1 -p 
+myprojectserver2Db@#$
+
+
+--------------------------------------------------------------
+
+=> Drop User 
+
+mysql -u root -p 
+mydbsever2025
+
+SELECT USER();
+
+DROP USER "user1"@"localhost";
+
+SELECT user FROM mysql.user;
+
+
+-----------------------------------------------------------------
+
+
+

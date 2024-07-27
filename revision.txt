@@ -1,17 +1,47 @@
-CREATE TABLE IF NOT EXISTS tempo (
-    id NOT NULL AUTO_INCREMENT ,
-    name VARCHAR(50),
-    age INT ,
-    city VARCHAR(50),
-    PRIMARY KEY(id)
+CREATE TABLE accounts(
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(50),
+    password VARCHAR(255)
 );
 
-DESC tempo;
-SELECT * FROM tempo;
+DESC accounts;
+SHOW CREATE TABLE accounts;
+SHOW INDEX FROM accounts;
 
-INSERT INTO tempo(name,age,city)
-VALUES ("aung aung",25,"mandalay"),
-       ("su su",20,"yangon"),
-       ("nu nu",18,"pyi");
+INSERT INTO accounts (name,email,password)
+VALUES ("aung aung","aungaung@gmail.com","12345"),
+("tun tun","tuntun@gmail.com","abcdef"),
+("kyaw kyaw","kyawkyaw@gmail.com","abc1234");
 
-SELECT * FROM tempo;
+SELECT * FROM accounts;
+
+
+SELECT name,email,
+    IF(password = "12345","correct password","incorrect password")
+FROM accounts;
+
+SELECT name,email,password,
+    CASE 
+        WHEN password = SHA1("12345") THEN "correct password"
+        WHEN password = MD5("abcdef") THEN "correct password"
+        WHEN password = "abc1234" THEN "correct password"
+        ELSE "incorrect password"
+    END AS "password verify"
+FROM accounts;
+
+INSERT INTO accounts (name,email,password)
+VALUES ("su su","su su@gmail.com",MD5(12345)),
+("nu nu","nunu@gmail.com",MD5("abcdef")),
+("yu yu","yuyu@gmail.com",SHA1("abc1234"));
+
+
+
+SELECT name,email,password,
+    CASE 
+        WHEN password = 12345 THEN "correct password"
+        WHEN password = SHA1("abcdef") THEN "correct password"
+        WHEN password = SHA1("abc1234") Terminal "correct password"
+        ELSE "incorrect password"
+    END AS "verify password"
+FROM accounts;
